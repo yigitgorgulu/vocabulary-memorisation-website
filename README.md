@@ -1,27 +1,34 @@
-# VocabularyMemorisationWebsite
+# Vocabulary Memorization Website
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.0.
+A vocabulary review website developed as a [Codementor.io](https://www.codementor.io/projects/web/vocabulary-memorization-website-b0wnnh30k3) project. Developed in Angular with [ng-bootstrap](https://ng-bootstrap.github.io/#/home).
 
-## Development server
+# Description
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+This is a website which allows users to review the vocabulary they learned in foreign languages, similar to language cards. The users can add languages and words to study. The words they add will be randomly presented to them in their native language, and the user should enter the translation in the foreign language.
 
-## Code scaffolding
+## Features
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Add multiple languages
+- Study words interactively
+- Get scores and results instantly
 
-## Build
+## How to use
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+To use this website, first sign up by creating a new account. Don't forget to specify your native language! Then, add any language that you want to learn from the list of languages, and start adding words to your list of study words.  
+Once you feel like there are enough words, switch to **study mode** to start studying those words. A word in your native language will pop up on your screen. In the field below, type what you think the word means in the foreign language.  
+When you finish studying, either after finishing all words or by quitting, you'll see your score (correct / total). Your score will be saved and in your next run, you can compare your score to your previous score.
 
-## Running unit tests
+## Technology Used
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- [Angular](https://angular.io/)
+- [ng-bootstrap](https://ng-bootstrap.github.io/#/home)
 
-## Running end-to-end tests
+# Installation
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## General use
 
-## Further help
+To download the relevant build files, look into the `dist` directory. This section will be updated further. 
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Development
+
+If you wish to develop the project further, you can clone the repository by running `git clone <url>` in your favourite terminal. After cloning the repository, use [npm](https://www.npmjs.com/) to install relevant modules by running `npm install` in the project root.
