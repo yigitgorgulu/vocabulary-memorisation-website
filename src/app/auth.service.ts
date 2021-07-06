@@ -5,28 +5,37 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
 
-  username: string = '';
-  email: string = '';
-  password: string = '';
-  isLoggedIn: boolean = false;
+  private _username: string = '';
+  private _email: string = '';
+  private _password: string = '';
+  private _isLoggedIn: boolean = false;
 
   login(username: string, password: string) {
-    if ( username === this.username && password === this.password ) {
-      this.isLoggedIn = true;
+    if ( username === this._username && password === this._password ) {
+      this._isLoggedIn = true;
+      window.localStorage.setItem('username', username);
     }
   }
 
   register(username: string, email: string, password: string) {
     if ( username && email && password ) {
-      this.username = username;
-      this.email = email;
-      this.password = password;
-      this.isLoggedIn = true;
+      this._username = username;
+      this._email = email;
+      this._password = password;
+      this._isLoggedIn = true;
+      window.localStorage.setItem('username', username);
     }
   }
 
   logout() {
-    this.isLoggedIn = false;
+    this._isLoggedIn = false;
+    window.localStorage.setItem('username', '');
+  }
+
+  isLoggedIn(): boolean {
+    return this._isLoggedIn
+      || (window.localStorage.getItem('username') !== null
+          && window.localStorage.getItem('username') !== '');
   }
 
 }

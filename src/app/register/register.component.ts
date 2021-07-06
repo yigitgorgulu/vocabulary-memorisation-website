@@ -6,6 +6,7 @@ import {
   Validators
 } from '@angular/forms';
 import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -20,8 +21,12 @@ export class RegisterComponent implements OnInit {
   emailControl: FormControl;
   passwordControl: FormControl;
 
-  constructor(private fb: FormBuilder, private auth: AuthService) {
-    this.registerForm = fb.group({
+  constructor(
+    private _fb: FormBuilder,
+    private _auth: AuthService,
+    private _router: Router
+  ) {
+    this.registerForm = _fb.group({
       'username': ['', Validators.required],
       'email': ['', Validators.required],
       'password': ['', Validators.required]
@@ -37,7 +42,9 @@ export class RegisterComponent implements OnInit {
     let email: string = this.emailControl.value;
     let password: string = this.passwordControl.value;
 
-    this.auth.register(username, email, password);
+    this._auth.register(username, email, password);
+
+    this._router.navigate(['/dashboard']);
   }
 
   ngOnInit(): void { }
