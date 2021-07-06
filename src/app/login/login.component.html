@@ -1,1 +1,19 @@
-<p>login works!</p>
+<button routerLink="/home">Home</button>
+<button routerLink="/register">Register</button>
+
+<form [formGroup]="loginForm"
+      (ngSubmit)="submit()">
+  <label for="username"></label>
+  <input type="text"
+         id="username"
+         placeholder="Username"
+         [formControl]="usernameControl" />
+
+  <label for="password"></label>
+  <input type="password"
+         id="password"
+         placeholder="Password"
+         [formControl]="passwordControl" />
+
+  <button type="submit">Submit</button>
+</form>
