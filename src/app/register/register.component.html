@@ -3,6 +3,8 @@
 
 <form [formGroup]="registerForm"
       (ngSubmit)="submit()">
+  <div *ngIf="!registerForm.valid">Username, email or password missing!</div>
+
   <label for="username"></label>
   <input type="text"
          id="username"
