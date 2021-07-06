@@ -10,14 +10,14 @@ export class AuthService {
   private _password: string = '';
   private _isLoggedIn: boolean = false;
 
-  login(username: string, password: string) {
+  login(username: string, password: string): void {
     if ( username === this._username && password === this._password ) {
       this._isLoggedIn = true;
       window.localStorage.setItem('username', username);
     }
   }
 
-  register(username: string, email: string, password: string) {
+  register(username: string, email: string, password: string): void {
     if ( username && email && password ) {
       this._username = username;
       this._email = email;
@@ -27,7 +27,7 @@ export class AuthService {
     }
   }
 
-  logout() {
+  logout(): void {
     this._isLoggedIn = false;
     window.localStorage.setItem('username', '');
   }

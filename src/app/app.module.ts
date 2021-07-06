@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AuthService } from './services/auth/auth.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     NgbModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    { provide: AuthService, useClass: AuthService }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
