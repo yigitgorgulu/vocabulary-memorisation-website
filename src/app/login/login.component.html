@@ -1,21 +1,21 @@
 <button routerLink="/home">Home</button>
 <button routerLink="/register">Register</button>
 
-<form [formGroup]="loginForm"
+<form [formGroup]="form"
       (ngSubmit)="submit()">
-  <div *ngIf="!loginForm.valid">Username or password missing!</div>
+  <div *ngIf="!form.valid">Username or password missing!</div>
 
   <label for="username"></label>
   <input type="text"
          id="username"
          placeholder="Username"
-         [formControl]="usernameControl" />
+         [formControl]="convert(form.controls.username)" />
 
   <label for="password"></label>
   <input type="password"
          id="password"
          placeholder="Password"
-         [formControl]="passwordControl" />
+         [formControl]="convert(form.controls.password)" />
 
   <button type="submit">Submit</button>
 </form>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {
+  AbstractControl,
   FormBuilder,
   FormControl,
   FormGroup,
@@ -16,31 +17,28 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
 
-  registerForm: FormGroup;
-  usernameControl: FormControl;
-  emailControl: FormControl;
-  passwordControl: FormControl;
+  form: FormGroup;
 
   constructor(
     private _fb: FormBuilder,
     private _auth: AuthService,
     private _router: Router
   ) {
-    this.registerForm = _fb.group({
+    this.form = _fb.group({
       'username': ['', Validators.required],
       'email': ['', Validators.required],
       'password': ['', Validators.required]
     });
+  }
 
-    this.usernameControl = <FormControl>this.registerForm.controls['username'];
-    this.emailControl = <FormControl>this.registerForm.controls['email'];
-    this.passwordControl = <FormControl>this.registerForm.controls['password'];
+  convert(x: AbstractControl): FormControl {
+    return <FormControl>x;
   }
 
   submit() {
-    let username: string = this.usernameControl.value;
-    let email: string = this.emailControl.value;
-    let password: string = this.passwordControl.value;
+    let username: string = this.form.controls.username.value;
+    let email: string = this.form.controls.email.value;
+    let password: string = this.form.controls.password.value;
 
     this._auth.register(username, email, password);
 
