@@ -1,0 +1,27 @@
+<button routerLink="/dashboard">Dashboard</button>
+<button (click)="logout()" routerLink="/home">Logout</button>
+
+<form [formGroup]="form"
+      (ngSubmit)="submit()">
+  <div *ngIf="!form.valid">Username, email or password missing!</div>
+
+  <label for="username"></label>
+  <input type="text"
+         id="username"
+         placeholder="Username"
+         [formControl]="convert(form.controls.username)" />
+
+  <label for="email"></label>
+  <input type="email"
+         id="email"
+         placeholder="Email address"
+         [formControl]="convert(form.controls.email)" />
+
+  <label for="password"></label>
+  <input type="password"
+         id="password"
+         placeholder="Password"
+         [formControl]="convert(form.controls.password)" />
+
+  <button type="submit">Submit</button>
+</form>

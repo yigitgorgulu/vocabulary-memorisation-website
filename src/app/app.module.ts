@@ -10,6 +10,9 @@ import { RegisterComponent } from './register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthService } from './services/auth/auth.service';
+import { AccountComponent } from './account/account.component';
+import { DeckComponent } from './deck/deck.component';
+import { StudyComponent } from './study/study.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,10 @@ import { AuthService } from './services/auth/auth.service';
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    DashboardComponent
+    DashboardComponent,
+    AccountComponent,
+    DeckComponent,
+    StudyComponent
   ],
   imports: [
     AppRoutingModule,

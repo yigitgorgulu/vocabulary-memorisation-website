@@ -38,4 +38,12 @@ export class AuthService {
           && window.localStorage.getItem('username') !== '');
   }
 
+  getInfo(): any {
+    return {
+      username: this._username,
+      email: this._email,
+      password: this._password
+    };
+  }
+
 }
