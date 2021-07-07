@@ -1,1 +1,20 @@
-<p>deck works!</p>
+<button routerLink="/dashboard">Dashboard</button>
+<button routerLink="/account">Account</button>
+<button (click)="logout()" routerLink="/home">Logout</button>
+
+<ul> <!-- TODO make dynamic-->
+  <li>Card #1</li>
+  <li>Card #2</li>
+  <li>Card #3</li>
+  <li>Card #4</li>
+</ul>
+
+<!-- TODO fix to add new card-->
+<button>Add Card</button>
+
+<!-- TODO make deck selectable, then these dynamic-->
+<button routerLink="/study/front/1">Study Front</button>
+<button routerLink="/study/back/1">Study Back</button>
+<button routerLink="/study/favourites/1">Study Favourites</button>
+
+<button routerLink="/dashboard">Delete Deck</button>

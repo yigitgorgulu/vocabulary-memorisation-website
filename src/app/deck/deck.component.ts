@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../services/auth/auth.service';
 
 @Component({
   selector: 'app-deck',
@@ -8,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DeckComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _auth: AuthService) { }
 
-  ngOnInit(): void {
+  logout() {
+    this._auth.logout();
   }
+
+  ngOnInit(): void { }
 
 }
