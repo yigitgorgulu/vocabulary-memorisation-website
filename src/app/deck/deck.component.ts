@@ -9,12 +9,16 @@ import { AuthService } from '../services/auth/auth.service';
 })
 export class DeckComponent implements OnInit {
 
+  name!: string;
+
   constructor(private _auth: AuthService) { }
 
   logout() {
     this._auth.logout();
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.name = 'Temp'; // TODO read this from data
+  }
 
 }

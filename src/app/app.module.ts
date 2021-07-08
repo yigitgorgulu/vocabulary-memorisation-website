@@ -7,7 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthService } from './services/auth/auth.service';
 import { AccountComponent } from './account/account.component';
@@ -25,12 +25,13 @@ import { StudyComponent } from './study/study.component';
     DeckComponent,
     StudyComponent
   ],
-  imports: [
-    AppRoutingModule,
-    BrowserModule,
-    NgbModule,
-    ReactiveFormsModule
-  ],
+	imports: [
+		AppRoutingModule,
+		BrowserModule,
+		NgbModule,
+		ReactiveFormsModule,
+		FormsModule
+	],
   providers: [
     { provide: AuthService, useClass: AuthService }
   ],
