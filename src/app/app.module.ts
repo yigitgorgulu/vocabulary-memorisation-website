@@ -13,6 +13,7 @@ import { AuthService } from './services/auth/auth.service';
 import { AccountComponent } from './account/account.component';
 import { DeckComponent } from './deck/deck.component';
 import { StudyComponent } from './study/study.component';
+import { CardComponent } from './card/card.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { StudyComponent } from './study/study.component';
     DashboardComponent,
     AccountComponent,
     DeckComponent,
-    StudyComponent
+    StudyComponent,
+    CardComponent
   ],
 	imports: [
 		AppRoutingModule,

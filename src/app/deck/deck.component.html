@@ -5,10 +5,10 @@
 <h1>Deck <input type="text" [(ngModel)]="name" /> </h1> <!-- TODO write this to data-->
 
 <ul> <!-- TODO make dynamic-->
-  <li>Card #1</li>
-  <li>Card #2</li>
-  <li>Card #3</li>
-  <li>Card #4</li>
+  <li routerLink="./card/1">Card #1</li>
+  <li routerLink="./card/2">Card #2</li>
+  <li routerLink="./card/3">Card #3</li>
+  <li routerLink="./card/4">Card #4</li>
 </ul>
 
 <!-- TODO fix to add new card-->
@@ -20,3 +20,6 @@
 <button routerLink="/study/favourites/1">Study Favourites</button>
 
 <button routerLink="/dashboard">Delete Deck</button>
+
+<br />
+<router-outlet></router-outlet>

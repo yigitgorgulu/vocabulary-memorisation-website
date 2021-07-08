@@ -8,6 +8,7 @@ import { AuthGuard } from './guards/auth/auth.guard';
 import { AccountComponent } from './account/account.component';
 import { DeckComponent } from './deck/deck.component';
 import { StudyComponent } from './study/study.component';
+import { CardComponent } from './card/card.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -16,7 +17,9 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'account', component: AccountComponent, canActivate: [AuthGuard] },
-  { path: 'deck/:id', component: DeckComponent, canActivate: [AuthGuard] },
+  { path: 'deck/:id', component: DeckComponent, canActivate: [AuthGuard], children: [
+      { path: 'card/:id', component: CardComponent }
+    ] },
   { path: 'study/:opt/:id', component: StudyComponent, canActivate: [AuthGuard] },
 ];
 
