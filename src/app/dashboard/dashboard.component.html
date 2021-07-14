@@ -1,12 +1,7 @@
 <button routerLink="/account">Account</button>
 <button (click)="logout()" routerLink="/home">Logout</button>
 
-<ul> <!-- TODO make dynamic-->
-  <li routerLink="/deck/1">Deck #1</li>
-  <li routerLink="/deck/2">Deck #2</li>
-  <li routerLink="/deck/3">Deck #3</li>
-  <li routerLink="/deck/4">Deck #4</li>
-</ul>
+<a *ngFor="let deck of decks" routerLink="/deck/{{ deck.id }}">{{ deck.name }}</a>
 
 <!-- TODO fix to create new deck-->
 <button routerLink="/deck/add">Add Deck</button>
