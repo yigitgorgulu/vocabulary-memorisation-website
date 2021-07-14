@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-card',
@@ -8,16 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardComponent implements OnInit {
 
-  front: string;
-  back: string;
+  id!: number;
+  front!: string;
+  back!: string;
 
-  constructor() {
-    // TODO make dynamic
-    this.front = 'Hallo';
-    this.back = 'Hello';
+  constructor(private _route: ActivatedRoute) {
+    _route.params.subscribe(params => this.id = params.id);
   }
 
   ngOnInit(): void {
+    // TODO make dynamic
+    this.front = 'Hallo';
+    this.back = 'Hello';
   }
 
 }

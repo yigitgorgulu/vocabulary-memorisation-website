@@ -2,19 +2,17 @@
 <button routerLink="/account">Account</button>
 <button (click)="logout()" routerLink="/home">Logout</button>
 
-<h1>Deck <input type="text" [(ngModel)]="name" /> </h1> <!-- TODO write this to data-->
+<!-- TODO write this to data -->
+<h1>Deck <input type="text" [(ngModel)]="name" /> </h1>
 
-<ul> <!-- TODO make dynamic-->
-  <li routerLink="./card/1">Card #1</li>
-  <li routerLink="./card/2">Card #2</li>
-  <li routerLink="./card/3">Card #3</li>
-  <li routerLink="./card/4">Card #4</li>
-</ul>
+<br />
+<a *ngFor="let card of cards" routerLink="./card/{{ card.id }}">
+  {{ card.front }} | {{ card.back }}<br />
+</a>
 
 <!-- TODO fix to add new card-->
 <button>Add Card</button>
 
-<!-- TODO make deck selectable, then these dynamic-->
 <button routerLink="/study/front/1">Study Front</button>
 <button routerLink="/study/back/1">Study Back</button>
 <button routerLink="/study/favourites/1">Study Favourites</button>
