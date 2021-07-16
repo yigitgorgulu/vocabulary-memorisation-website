@@ -14,29 +14,35 @@ import { AccountComponent } from './account/account.component';
 import { DeckComponent } from './deck/deck.component';
 import { StudyComponent } from './study/study.component';
 import { CardComponent } from './card/card.component';
+import { DatabaseService } from './services/database/database.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    LoginComponent,
-    RegisterComponent,
-    DashboardComponent,
-    AccountComponent,
-    DeckComponent,
-    StudyComponent,
-    CardComponent
-  ],
+	declarations: [
+		AppComponent,
+		HomeComponent,
+		LoginComponent,
+		RegisterComponent,
+		DashboardComponent,
+		AccountComponent,
+		DeckComponent,
+		StudyComponent,
+		CardComponent
+	],
 	imports: [
 		AppRoutingModule,
 		BrowserModule,
 		NgbModule,
 		ReactiveFormsModule,
-		FormsModule
+		FormsModule,
+		HttpClientModule
 	],
-  providers: [
-    { provide: AuthService, useClass: AuthService }
-  ],
-  bootstrap: [AppComponent]
+	providers: [
+		{ provide: AuthService, useClass: AuthService },
+		{ provide: DatabaseService, useClass: DatabaseService },
+		{ provide: 'DB_URL', useValue: 'http://localhost:3000' }
+	],
+	bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

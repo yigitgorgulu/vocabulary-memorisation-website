@@ -40,8 +40,10 @@ export class RegisterComponent implements OnInit {
     let email: string = this.form.controls.email.value;
     let password: string = this.form.controls.password.value;
 
-    this._auth.register(username, email, password);
+    this._auth.register(username, email, password, this.onRegisterSuccess, this);
+  }
 
+  onRegisterSuccess() {
     this._router.navigate(['/dashboard']);
   }
 
