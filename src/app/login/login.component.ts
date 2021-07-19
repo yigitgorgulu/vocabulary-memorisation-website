@@ -35,8 +35,10 @@ export class LoginComponent implements OnInit {
     let username: string = this.form.controls.username.value;
     let password: string = this.form.controls.password.value;
 
-    this._auth.login(username, password);
+    this._auth.login(username, password, this.onLoginSuccess, this);
+  }
 
+  onLoginSuccess() {
     this._router.navigate(['/dashboard']);
   }
 

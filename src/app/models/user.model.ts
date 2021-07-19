@@ -11,5 +11,9 @@ export class User {
 	) {
 		this.decks = [];
 	}
+
+	addDeck(deck: Deck) : void {
+		this.decks.push(deck);
+	}
 }
 
