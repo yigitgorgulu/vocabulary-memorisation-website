@@ -52,7 +52,7 @@ export class AuthService {
 	}
 
 	logout(): void {
-		this._db.logout(this._user.id);
+		this._db.logout();
 	}
 
 	getUserId(): number {

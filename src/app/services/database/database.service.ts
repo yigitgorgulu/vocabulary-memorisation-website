@@ -7,6 +7,8 @@ import { User } from '../../models/user.model';
 })
 export class DatabaseService {
 
+	private _sessionId!: number;
+
 	constructor(
 		private _http: HttpClient,
 		@Inject('DB_URL') private _dbUrl: string
@@ -50,14 +52,16 @@ export class DatabaseService {
 
 		await this._http.post(`${this._dbUrl}/sessions`, {
 			username: username
-		}).toPromise();
+		}).toPromise().then((session: any) => {
+			this._sessionId = session.id;
+		});
 
 		return user;
 	}
 
-	async logout(userId: number) {
+	async logout() {
 		await this._http
-				  .delete(`${this._dbUrl}/sessions/${userId}`)
+				  .delete(`${this._dbUrl}/sessions/${this._sessionId}`)
 				  .toPromise();
 	}
 
