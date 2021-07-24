@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth/auth.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Card } from '../models/card.model';
 import { DataService } from '../services/data/data.service';
 
@@ -19,7 +19,8 @@ export class DeckComponent implements OnInit {
   constructor(
       private _auth: AuthService,
       private _route: ActivatedRoute,
-      private _data: DataService
+      private _data: DataService,
+      private _router: Router
   ) {
     _route.params.subscribe(params => this.id = params.id);
   }
@@ -29,11 +30,17 @@ export class DeckComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this._data.retrieveDeckName(this.id).then((info: any) => {
-      this.name = info.name;
-    });
+    if ( Number(this.id) === 0 ) {
+      this._data.createNewDeck().then((info: any) => {
+        this._router.navigate([`/deck/${info.id}`]);
+      });
+    } else {
+      this._data.retrieveDeckName(this.id).then((info: any) => {
+        this.name = info.name;
+      });
 
-    this.cards = this._data.retrieveCards(this.id);
+      this.cards = this._data.retrieveCards(this.id);
+    }
   }
 
 }

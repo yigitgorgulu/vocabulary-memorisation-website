@@ -29,4 +29,10 @@ export class DataService {
 		return <Promise<Card>>this._db.retrieveCard(cardId);
 	}
 
+	createNewDeck(): Promise<Deck> {
+		let userId: number = this._auth.getUserId();
+
+		return <Promise<Deck>>this._db.createNewDeck(userId);
+	}
+
 }

@@ -89,4 +89,13 @@ export class DatabaseService {
 						 .toPromise();
 	}
 
+	async createNewDeck(userId: number) {
+		return await this._http
+						 .post(`${this._dbUrl}/users/${userId}/decks`,
+							 {
+							 	name: ''
+							 })
+						 .toPromise();
+	}
+
 }
