@@ -55,6 +55,10 @@ export class AuthService {
 		this._db.logout(this._user.id);
 	}
 
+	getUserId(): number {
+		return this._user ? this._user.id : -1;
+	}
+
 	isLoggedIn(): boolean {
 		// TODO implement
 		return false;

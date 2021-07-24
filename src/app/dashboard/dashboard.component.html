@@ -1,10 +1,12 @@
 <button routerLink="/account">Account</button>
 <button (click)="logout()" routerLink="/home">Logout</button>
 
-<a *ngFor="let deck of decks" routerLink="/deck/{{ deck.id }}">{{ deck.name }}</a>
+<a *ngFor="let deck of decks | async" routerLink="/deck/{{ deck.id }}">
+    {{ deck.name }}
+</a>
 
 <!-- TODO fix to create new deck-->
-<button routerLink="/deck/add">Add Deck</button>
+<button routerLink="/deck/new">Add Deck</button>
 
 <!-- TODO make deck selectable, then these dynamic
 <button routerLink="/study/front/1">Study Front</button>

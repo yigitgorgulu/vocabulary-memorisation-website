@@ -61,4 +61,10 @@ export class DatabaseService {
 				  .toPromise();
 	}
 
+	async retrieveUserDecks(userId: number) {
+		return await this._http
+						 .get(`${this._dbUrl}/users/${userId}/decks`)
+						 .toPromise();
+	}
+
 }
