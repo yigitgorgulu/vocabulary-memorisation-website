@@ -91,11 +91,23 @@ export class DatabaseService {
 
 	async createNewDeck(userId: number) {
 		return await this._http
-						 .post(`${this._dbUrl}/users/${userId}/decks`,
+						 .post(
+						 	`${this._dbUrl}/users/${userId}/decks`,
 							 {
 							 	name: ''
-							 })
-						 .toPromise();
+							 }
+						 ).toPromise();
+	}
+
+	async createNewCard(deckId: number) {
+		return await this._http
+						 .post(
+						 	`${this._dbUrl}/decks/${deckId}/cards`,
+							 {
+							 	front: '',
+								 back: ''
+							 }
+						 ).toPromise();
 	}
 
 }

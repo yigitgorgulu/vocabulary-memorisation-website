@@ -35,4 +35,8 @@ export class DataService {
 		return <Promise<Deck>>this._db.createNewDeck(userId);
 	}
 
+	createNewCard(deckId: number): Promise<Card> {
+		return <Promise<Card>>this._db.createNewCard(deckId);
+	}
+
 }
