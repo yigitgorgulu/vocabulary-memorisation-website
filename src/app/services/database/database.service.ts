@@ -67,4 +67,16 @@ export class DatabaseService {
 						 .toPromise();
 	}
 
+	async retrieveDeckName(deckId: number) {
+		return await this._http
+						 .get(`${this._dbUrl}/decks/${deckId}`)
+						 .toPromise();
+	}
+
+	async retrieveCards(deckId: number) {
+		return await this._http
+						 .get(`${this._dbUrl}/decks/${deckId}/cards`)
+						 .toPromise();
+	}
+
 }

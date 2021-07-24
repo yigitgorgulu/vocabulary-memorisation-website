@@ -6,7 +6,7 @@
 <h1>Deck <input type="text" [(ngModel)]="name" /> </h1>
 
 <br />
-<a *ngFor="let card of cards" routerLink="./card/{{ card.id }}">
+<a *ngFor="let card of cards | async" routerLink="./card/{{ card.id }}">
   {{ card.front }} | {{ card.back }}<br />
 </a>
 
