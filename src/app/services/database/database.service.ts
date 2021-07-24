@@ -79,4 +79,10 @@ export class DatabaseService {
 						 .toPromise();
 	}
 
+	async retrieveCard(cardId: number) {
+		return await this._http
+						 .get(`${this._dbUrl}/cards/${cardId}`)
+						 .toPromise();
+	}
+
 }

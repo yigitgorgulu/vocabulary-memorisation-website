@@ -25,4 +25,8 @@ export class DataService {
 		return <Promise<Card[]>>this._db.retrieveCards(deckId);
 	}
 
+	retrieveCard(cardId: number): Promise<Card> {
+		return <Promise<Card>>this._db.retrieveCard(cardId);
+	}
+
 }

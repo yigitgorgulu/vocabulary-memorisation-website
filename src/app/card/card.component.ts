@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { DataService } from '../services/data/data.service';
 
 @Component({
   selector: 'app-card',
@@ -13,14 +14,15 @@ export class CardComponent implements OnInit {
   front!: string;
   back!: string;
 
-  constructor(private _route: ActivatedRoute) {
+  constructor(private _route: ActivatedRoute, private _data: DataService) {
     _route.params.subscribe(params => this.id = params.id);
   }
 
   ngOnInit(): void {
-    // TODO make dynamic
-    this.front = 'Hallo';
-    this.back = 'Hello';
+    this._data.retrieveCard(this.id).then((info: any) => {
+      this.front = info.front;
+      this.back = info.back;
+    });
   }
 
 }
