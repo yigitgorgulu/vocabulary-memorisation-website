@@ -6,7 +6,7 @@
 <h1>Deck <input type="text" [(ngModel)]="name" /> </h1>
 
 <br />
-<a *ngFor="let card of cards | async" routerLink="./card/{{ card.id }}">
+<a *ngFor="let card of cards" routerLink="./card/{{ card.id }}">
   {{ card.front }} | {{ card.back }}<br />
 </a>
 
@@ -19,4 +19,4 @@
 <button routerLink="/dashboard">Delete Deck</button>
 
 <br />
-<router-outlet></router-outlet>
+<router-outlet (deactivate)="onDeactivate($event)"></router-outlet>
