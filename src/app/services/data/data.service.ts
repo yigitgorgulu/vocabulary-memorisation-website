@@ -39,4 +39,17 @@ export class DataService {
 		return <Promise<Card>>this._db.createNewCard(deckId);
 	}
 
+	updateCard(
+		cardId: number,
+		deckId: number,
+		front: string,
+		back: string
+	): Promise<Card> {
+		return <Promise<Card>>this._db.updateCard(cardId, deckId, front, back);
+	}
+
+	deleteCard(cardId: number) {
+		this._db.deleteCard(cardId);
+	}
+
 }

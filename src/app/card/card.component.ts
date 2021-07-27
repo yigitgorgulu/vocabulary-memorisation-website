@@ -9,6 +9,7 @@ import { DataService } from '../services/data/data.service';
 })
 export class CardComponent implements OnInit {
 
+	deckId!: number;
 	id!: number;
 	front!: string;
 	back!: string;
@@ -23,17 +24,28 @@ export class CardComponent implements OnInit {
 
 	ngOnInit(): void {
 		if ( Number(this.id) === 0 ) {
-			let deckId = 0;
-			this._route.parent?.params.subscribe(params => deckId = params.id)
-			this._data.createNewCard(deckId).then((info: any) => {
-				this._router.navigate([`/deck/${deckId}/card/${info.id}`]);
+			this._route.parent!.params.subscribe(params => {
+				this.deckId = params.id
+			});
+			this._data.createNewCard(this.deckId).then((info: any) => {
+				this._router.navigate([`/deck/${this.deckId}/card/${info.id}`]);
 			});
 		} else {
 			this._data.retrieveCard(this.id).then((info: any) => {
 				this.front = info.front;
 				this.back = info.back;
+				this.deckId = info.deckId;
 			});
 		}
+	}
+
+	updateCard() {
+		this._data.updateCard(this.id, this.deckId, this.front, this.back);
+	}
+
+	deleteCard() {
+		this._data.deleteCard(this.id);
+		this._router.navigate([`/deck/${this.deckId}`])
 	}
 
 }
