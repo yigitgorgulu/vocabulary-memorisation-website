@@ -15,7 +15,9 @@ export class StudyComponent implements OnInit {
 	opt!: number;
 	deckId!: number;
 	toStudy!: Card[];
-	current!: Card;
+	currentIndex!: number;
+	score: number;
+	done!: boolean;
 
 	constructor(
 		private _auth: AuthService,
@@ -25,7 +27,8 @@ export class StudyComponent implements OnInit {
 		_route.params.subscribe(params => {
 			this.opt = params.opt;
 			this.deckId = params.id;
-		})
+		});
+		this.score = 0;
 	}
 
 	logout() {
@@ -36,8 +39,39 @@ export class StudyComponent implements OnInit {
 		this._data.retrieveCards(this.deckId).then(cards => {
 			this.toStudy = cards;
 			shuffle(this.toStudy);
-			this.current = this.toStudy[0];
+			this.currentIndex = 0;
 		});
+	}
+
+	checkAnswer(answer: HTMLInputElement) {
+		if ( this.toStudy[this.currentIndex].back === answer.value ) {
+			this.score += 1;
+			answer.value = '';
+			if ( this.currentIndex !== this.toStudy.length - 1 ) {
+				this.toStudy.splice(this.currentIndex, 1);
+			} else {
+				this.done = true;
+				answer.disabled = true;
+			}
+		} else {
+			this.score -= 1;
+		}
+	}
+
+	nextCard() {
+		if ( this.currentIndex < this.toStudy.length - 1 ) {
+			this.currentIndex += 1;
+		}
+	}
+
+	previousCard() {
+		if ( this.currentIndex >= 1 ) {
+			this.currentIndex -= 1;
+		}
+	}
+
+	showAnswer() {
+		// TODO implement
 	}
 
 }
