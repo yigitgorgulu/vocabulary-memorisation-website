@@ -73,7 +73,9 @@ export class DeckComponent implements OnInit {
 				id: Number(event.id)
 			});
 		} else {
-			if ( matching.front !== event.front
+			if ( event.front === '' || event.back === '' ) { // card deleted
+				this.cards.splice(index, 1);
+			} else if ( matching.front !== event.front
 				|| matching.back !== event.back ) { // updated card
 				this.cards.splice(index, 1, {
 					front: event.front,

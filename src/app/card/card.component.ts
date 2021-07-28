@@ -45,6 +45,8 @@ export class CardComponent implements OnInit {
 
 	deleteCard() {
 		this._data.deleteCard(this.id);
+		this.front = '';
+		this.back = '';
 		this._router.navigate([`/deck/${this.deckId}`])
 	}
 
