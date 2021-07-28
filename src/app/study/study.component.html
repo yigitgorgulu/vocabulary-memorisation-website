@@ -11,9 +11,8 @@
     Deck finished!
 </p>
 
-<div *ngIf="toStudy">
-    <p><b>{{ toStudy[currentIndex].front }}</b></p>
-</div>
+<p *ngIf="toStudy"><b>{{ toStudy[currentIndex].front }}</b></p>
+<p *ngIf="show">Answer: {{ toStudy[currentIndex].back }}</p>
 
 <input type="text" #answer />
 <button (click)="checkAnswer(answer)">Submit</button>

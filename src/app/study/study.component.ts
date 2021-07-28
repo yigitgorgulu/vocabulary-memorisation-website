@@ -18,6 +18,7 @@ export class StudyComponent implements OnInit {
 	currentIndex!: number;
 	score: number;
 	done!: boolean;
+	show!: boolean;
 
 	constructor(
 		private _auth: AuthService,
@@ -44,7 +45,8 @@ export class StudyComponent implements OnInit {
 	}
 
 	checkAnswer(answer: HTMLInputElement) {
-		if ( this.toStudy[this.currentIndex].back === answer.value ) {
+		if ( this.toStudy[this.currentIndex].back === answer.value
+			&& !this.show ) {
 			this.score += 1;
 			answer.value = '';
 			if ( this.currentIndex !== this.toStudy.length - 1 ) {
@@ -53,7 +55,7 @@ export class StudyComponent implements OnInit {
 				this.done = true;
 				answer.disabled = true;
 			}
-		} else {
+		} else if (!this.show) {
 			this.score -= 1;
 		}
 	}
@@ -61,17 +63,19 @@ export class StudyComponent implements OnInit {
 	nextCard() {
 		if ( this.currentIndex < this.toStudy.length - 1 ) {
 			this.currentIndex += 1;
+			this.show = false;
 		}
 	}
 
 	previousCard() {
 		if ( this.currentIndex >= 1 ) {
 			this.currentIndex -= 1;
+			this.show = false;
 		}
 	}
 
 	showAnswer() {
-		// TODO implement
+		this.show = true;
 	}
 
 }
