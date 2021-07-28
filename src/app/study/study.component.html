@@ -2,7 +2,9 @@
 <button routerLink="/account">Account</button>
 <button (click)="logout()" routerLink="/home">Logout</button>
 
-<p><b>Prompt</b></p>
+<div *ngIf="current">
+    <p><b>{{ current.front }}</b></p>
+</div>
 
 <input type="text" />
 <button>Submit</button>

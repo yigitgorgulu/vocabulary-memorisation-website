@@ -72,18 +72,16 @@ export class DeckComponent implements OnInit {
 				deckId: event.deckId,
 				id: Number(event.id)
 			});
-		} else {
-			if ( event.front === '' || event.back === '' ) { // card deleted
-				this.cards.splice(index, 1);
-			} else if ( matching.front !== event.front
-				|| matching.back !== event.back ) { // updated card
-				this.cards.splice(index, 1, {
-					front: event.front,
-					back: event.back,
-					deckId: event.deckId,
-					id: event.id
-				});
-			}
+		} else if ( event.front === '' || event.back === '' ) { // card deleted
+			this.cards.splice(index, 1);
+		} else if ( matching.front !== event.front
+			|| matching.back !== event.back ) { // updated card
+			this.cards.splice(index, 1, {
+				front: event.front,
+				back: event.back,
+				deckId: event.deckId,
+				id: event.id
+			});
 		}
 	}
 
