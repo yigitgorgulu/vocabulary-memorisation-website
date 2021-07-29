@@ -16,7 +16,7 @@
 <button routerLink="/study/back/1">Study Back</button>
 <button routerLink="/study/favourites/1">Study Favourites</button>
 
-<button routerLink="/dashboard">Delete Deck</button>
+<button (click)="deleteDeck()">Delete Deck</button>
 
 <br />
 <router-outlet (deactivate)="onDeactivate($event)"></router-outlet>

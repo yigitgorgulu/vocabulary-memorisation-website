@@ -52,4 +52,8 @@ export class DataService {
 		this._db.deleteCard(cardId);
 	}
 
+	deleteDeck(deckId: number) {
+		this._db.deleteDeck(deckId);
+	}
+
 }

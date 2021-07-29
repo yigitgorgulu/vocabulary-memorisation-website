@@ -132,4 +132,10 @@ export class DatabaseService {
 						 .toPromise();
 	}
 
+	async deleteDeck(deckId: number) {
+		return await this._http
+						 .delete(`${ this._dbUrl }/decks/${ deckId }`)
+						 .toPromise();
+	}
+
 }

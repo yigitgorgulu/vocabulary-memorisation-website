@@ -85,5 +85,10 @@ export class DeckComponent implements OnInit {
 		}
 	}
 
+	deleteDeck() {
+		this._data.deleteDeck(this.id);
+		this._router.navigate(['/dashboard']);
+	}
+
 }
 
