@@ -12,9 +12,10 @@ import { shuffle } from '../utils';
 })
 export class StudyComponent implements OnInit {
 
-	opt!: number;
+	opt!: string;
 	deckId!: number;
 	toStudy!: Card[];
+	studied!: { card: Card, answer: string, correct: boolean }[];
 	currentIndex!: number;
 	score: number;
 	done!: boolean;
@@ -30,6 +31,8 @@ export class StudyComponent implements OnInit {
 			this.deckId = params.id;
 		});
 		this.score = 0;
+		this.currentIndex = 0;
+		this.studied = [];
 	}
 
 	logout() {
@@ -40,24 +43,30 @@ export class StudyComponent implements OnInit {
 		this._data.retrieveCards(this.deckId).then(cards => {
 			this.toStudy = cards;
 			shuffle(this.toStudy);
-			this.currentIndex = 0;
 		});
 	}
 
-	checkAnswer(answer: HTMLInputElement) {
-		if ( this.toStudy[this.currentIndex].back === answer.value
-			&& !this.show ) {
-			this.score += 1;
-			answer.value = '';
-			if ( this.currentIndex !== this.toStudy.length - 1 ) {
+	submitAnswer(answer: HTMLInputElement) {
+		let correct: Card = this.toStudy[this.currentIndex];
+		let input: string = answer.value;
+
+		if ( !this.show ) {
+			this.score += correct.back === input ? 1 : -1;
+
+			this.studied.push({
+				card: correct,
+				answer: input,
+				correct: correct.back === input
+			});
+
+			if ( this.currentIndex < this.toStudy.length - 1 ) {
 				this.toStudy.splice(this.currentIndex, 1);
 			} else {
 				this.done = true;
-				answer.disabled = true;
 			}
-		} else if (!this.show) {
-			this.score -= 1;
 		}
+
+		answer.value = '';
 	}
 
 	nextCard() {

@@ -2,22 +2,25 @@
 <button routerLink="/account">Account</button>
 <button (click)="logout()" routerLink="/home">Logout</button>
 
-<p *ngIf="!done">
+<div *ngIf="!done">
     Score: {{ score }}
-</p>
+    <p *ngIf="toStudy"><b>{{ toStudy[currentIndex].front }}</b></p>
+    <p *ngIf="show">Answer: {{ toStudy[currentIndex].back }}</p>
 
-<p *ngIf="done">
+    <input type="text" #answer />
+    <button (click)="submitAnswer(answer)">Submit</button>
+    <br />
+
+    <button (click)="previousCard()">Previous Card</button>
+    <button (click)="showAnswer()">Show Answer</button>
+    <button (click)="nextCard()">Next Card</button>
+</div>
+
+<div *ngIf="done">
     Score: {{ score }}
-    Deck finished!
-</p>
-
-<p *ngIf="toStudy"><b>{{ toStudy[currentIndex].front }}</b></p>
-<p *ngIf="show">Answer: {{ toStudy[currentIndex].back }}</p>
-
-<input type="text" #answer />
-<button (click)="checkAnswer(answer)">Submit</button>
-<br />
-
-<button (click)="previousCard()">Previous Card</button>
-<button (click)="showAnswer()">Show Answer</button>
-<button (click)="nextCard()">Next Card</button>
+    <ul>
+        <li *ngFor="let answer of studied">
+            {{ answer.card.front }} | {{ answer.card.back }} | {{ answer.answer }} | {{ answer.correct }}
+        </li>
+    </ul>
+</div>
