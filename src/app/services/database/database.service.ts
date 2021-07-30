@@ -145,4 +145,12 @@ export class DatabaseService {
 		}).toPromise();
 	}
 
+	async updateAccountInfo(userId: number, username: string, email: string, password: string) {
+		return await this._http.put(`${this._dbUrl}/users/${userId}`, {
+			username: username,
+			email: email,
+			password: password
+		}).toPromise();
+	}
+
 }

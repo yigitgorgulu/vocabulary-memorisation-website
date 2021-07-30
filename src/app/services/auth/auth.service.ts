@@ -68,4 +68,13 @@ export class AuthService {
 		return this._user;
 	}
 
+	updateAccountInfo(username: string, email: string, password: string) {
+		this._db.updateAccountInfo(
+			this.getUserId(),
+			username,
+			email,
+			password
+		);
+	}
+
 }

@@ -32,7 +32,7 @@ export class AccountComponent implements OnInit {
     let email: string = this.form.controls.email.value;
     let password: string = this.form.controls.password.value;
 
-    // this._auth.register(username, email, password); // TODO dirty, fix
+    this._auth.updateAccountInfo(username, email, password);
   }
 
   convert(x: AbstractControl): FormControl {
