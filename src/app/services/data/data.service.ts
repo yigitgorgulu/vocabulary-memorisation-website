@@ -56,4 +56,8 @@ export class DataService {
 		this._db.deleteDeck(deckId);
 	}
 
+	updateDeckName(name: string, deckId: number, userId: number): Promise<any> {
+		return this._db.updateDeckName(name, deckId, userId);
+	}
+
 }

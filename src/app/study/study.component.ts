@@ -12,8 +12,8 @@ import { shuffle } from '../utils';
 })
 export class StudyComponent implements OnInit {
 
-	opt!: string;
 	deckId!: number;
+	cardCount!: number;
 	toStudy!: Card[];
 	studied!: { card: Card, answer: string, correct: boolean }[];
 	currentIndex!: number;
@@ -27,7 +27,6 @@ export class StudyComponent implements OnInit {
 		private _data: DataService
 	) {
 		_route.params.subscribe(params => {
-			this.opt = params.opt;
 			this.deckId = params.id;
 		});
 		this.score = 0;
@@ -41,6 +40,7 @@ export class StudyComponent implements OnInit {
 
 	ngOnInit(): void {
 		this._data.retrieveCards(this.deckId).then(cards => {
+			this.cardCount = cards.length;
 			this.toStudy = cards;
 			shuffle(this.toStudy);
 		});

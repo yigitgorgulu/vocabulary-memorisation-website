@@ -4,6 +4,7 @@
 
 <div *ngIf="!done">
     Score: {{ score }}
+    Progress: {{ cardCount - toStudy.length }}/{{ cardCount }}
     <p *ngIf="toStudy"><b>{{ toStudy[currentIndex].front }}</b></p>
     <p *ngIf="show">Answer: {{ toStudy[currentIndex].back }}</p>
 
@@ -18,6 +19,7 @@
 
 <div *ngIf="done">
     Score: {{ score }}
+    Prompt | Correct answer | Your answer | Correctness of your answer
     <ul>
         <li *ngFor="let answer of studied">
             {{ answer.card.front }} | {{ answer.card.back }} | {{ answer.answer }} | {{ answer.correct }}

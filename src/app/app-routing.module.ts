@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'deck/:id', component: DeckComponent, canActivate: [AuthGuard], children: [
       { path: 'card/:id', component: CardComponent }
     ] },
-  { path: 'study/:opt/:id', component: StudyComponent, canActivate: [AuthGuard] },
+  { path: 'study/:id', component: StudyComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

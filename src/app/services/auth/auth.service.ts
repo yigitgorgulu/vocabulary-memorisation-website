@@ -65,7 +65,6 @@ export class AuthService {
 	}
 
 	getInfo(): User {
-		// TODO implement
 		return this._user;
 	}
 

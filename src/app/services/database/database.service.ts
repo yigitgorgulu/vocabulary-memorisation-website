@@ -138,4 +138,11 @@ export class DatabaseService {
 						 .toPromise();
 	}
 
+	async updateDeckName(name: string, deckId: number, userId: number) {
+		return await this._http.put(`${this._dbUrl}/decks/${deckId}`, {
+			name: name,
+			userId: userId
+		}).toPromise();
+	}
+
 }

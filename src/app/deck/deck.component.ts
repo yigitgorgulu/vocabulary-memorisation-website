@@ -90,5 +90,9 @@ export class DeckComponent implements OnInit {
 		this._router.navigate(['/dashboard']);
 	}
 
+	updateDeckName() {
+		this._data.updateDeckName(this.name, this.id, this._auth.getUserId());
+	}
+
 }
 
